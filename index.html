@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云直播</title>
+    <style>
+        #live {
+            margin: 0 auto;
+            display: block;
+            min-width: 300px;
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="live" playsinline controls src="" poster="./img/poster.jpg"></video>
+    <script src="js/flv.min.js"></script>
+    <script>
+        if (flvjs.isSupported()) {
+            let ve = document.getElementById('live');
+            let flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: 'http://' + location.hostname + ':3002/live/live.flv'
+            });
+            flvPlayer.attachMediaElement(ve);
+            flvPlayer.load();
+            flvPlayer.play();
+        }
+    </script>
+</body>
+
+</html>
